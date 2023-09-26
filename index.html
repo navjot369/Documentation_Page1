@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File handling in Python</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <div id="header">
+        <header>File Handling</header>
+      </div>
+      <div id="links">
+        <a href="#Introduction" class="nav-link">Introduction</a>
+        <a href="#Opening_files" class="nav-link">Opening files</a>
+        <a href="#Reading_files" class="nav-link">Reading files</a>
+        <a href="#Closing_files" class="nav-link">Closing files</a>
+        <a href="#Writing_in_files" class="nav-link">Writing in files</a>
+        <a href="#Creating_files" class="nav-link">Creating files</a>
+        <a href="#Delete_files" class="nav-link">Delete files</a>
+      </div>
+    </nav>
+    <main id="main-doc">
+      <h1>File Handling in Python</h1>
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <div class="inner-part">
+          <p>
+            File handling is an important part of any web application. Python has
+            several functions for creating, reading, updating, and deleting
+            files.
+          </p>
+          <p>
+            The key function for working with files in Python is the open()
+            function. The open() function takes two
+            parameters; filename, and mode.
+          </p>
+          <p>There are four different methods (modes) for opening a file:</p>
+          <ul>
+            <li>
+              <span class="desp-list">"r" - Read - </span>Default value. Opens a
+              file for reading, error if the file does not exist
+            </li>
+            <li>
+              <span class="desp-list">"a" - Append -</span> Opens a file for
+              appending, creates the file if it does not exist
+            </li>
+            <li>
+              <span class="desp-list">"w" - Write -</span> Opens a file for
+              writing, creates the file if it does not exist
+            </li>
+            <li>
+              <span class="desp-list">"x" - Create - </span>Creates the
+              specified file, returns an error if the file exists
+            </li>
+          </ul>
+          <p>
+            In addition you can specify if the file should be handled as binary
+            or text mode
+          </p>
+          <ul>
+            <li>
+              <span class="desp-list">"t" - Text -</span> Default value. Text
+              mode
+            </li>
+            <li>
+              <span class="desp-list">"b" - Binary - </span>Binary mode (e.g.
+              images)
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="main-section" id="Opening_files">
+        <header>Opening files</header>
+        <div class="inner-part">
+          <p>
+            To open a file for reading it is enough to specify the name of the
+            file:
+          </p>
+          <code class="full">f = open("demofile.txt")</code>
+          <p>The code above is the same as:</p>
+          <code class="full">f = open("demofile.txt", "rt")</code>
+          <p>
+            Because "r" for read, and "t" for text are the default values, you
+            do not need to specify them.
+          </p>
+        </div>
+      </section>
+      <section class="main-section" id="Reading_files">
+        <header>Reading files</header>
+        <div class="inner-part">
+          <p>
+            The open() function returns a file object, which has a read() method
+            for reading the content of the file:
+          </p>
+          <code class="full"
+            >f = open("demofile.txt", "r")<br />
+            print(f.read())</code
+          >
+          <div class="inner-section">
+            <h3>Reading files at diffrent locations</h3>
+            <p>
+              If the file is located at a different location, you will have to
+              specify the file path, like this:
+            </p>
+            <code class="full"
+              >f = open("D:\\myfiles\welcome.txt", "r") <br />
+              print(f.read())</code
+            >
+          </div>
+          <div class="inner-section">
+            <h3>Read only parts of files</h3>
+            <p>
+              By default the read() method returns the whole text, but you can
+              also specify how many characters you want to return:
+            </p>
+            <code class="full"
+              >f = open("demofile.txt", "r")<br />
+              print(f.read(5))</code
+            >
+          </div>
+          <div class="inner-section">
+            <h3>Read lines</h3>
+            <p>
+              You can return one line by using the readline() method:
+            </p>
+            <code class="full"
+              >f = open("demofile.txt", "r")<br />
+              print(f.readline())</code
+            >
+          </div>
+        </div>
+      </section>
+      <section class="main-section" id="Closing_files">
+        <header>Closing files</header>
+        <div class="inner-part">
+          <p>
+            It is a good practice to always close the file when you are done
+            with it.
+          </p>
+          <code class="full">
+            f = open("demofile.txt", "r") <br />
+            print(f.readline()) <br />
+            f.close()
+          </code>
+        </div>
+      </section>
+      <section class="main-section" id="Writing_in_files">
+        <header>Writing in files</header>
+        <div class="inner-part">
+          <p>
+            To write to an existing file, you must add a parameter to the open()
+            function:
+          </p>
+          <ul>
+            <li>
+              <span class="desp-list">"a" - Append -</span> will append to the
+              end of the file
+            </li>
+            <li>
+              <span class="desp-list">"w" - Write -</span> will overwrite any
+              existing content
+            </li>
+          </ul>
+          <code class="full"
+            >f = open("demofile3.txt", "w")<br />
+            f.write("Woops! I have deleted the content!")<br />
+            f.close()</code
+          >
+        </div>
+      </section>
+      <section class="main-section" id="Creating_files">
+        <header>Creating files</header>
+        <div class="inner-part">
+          <p>
+            To create a new file in Python, use the open() method, with one of
+            the following parameters:
+          </p>
+          <ul>
+            <li>
+              <span class="desp-list">"x" - Create - </span>will create a file,
+              returns an error if the file exist
+            </li>
+            <li>
+              <span class="desp-list">"a" - Append - </span>will create a file
+              if the specified file does not exist
+            </li>
+            <li>
+              <span class="desp-list">"w" - Write - </span>will create a file if
+              the specified file does not exist
+            </li>
+          </ul>
+          <code class="full">f = open("myfile.txt", "x")</code>
+        </div>
+      </section>
+      <section class="main-section" id="Delete_files">
+        <header>Delete files</header>
+        <div class="inner-part">
+          <p>
+            To delete a file, you must import the OS module, and run its os.remove() function:
+          </p>
+          <code class="full"
+            >import os<br />
+            os.remove("demofile.txt")</code
+          >
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
